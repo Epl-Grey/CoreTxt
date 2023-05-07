@@ -17,6 +17,12 @@
         android:fontFamily="@font/qrfont"
         android:textAppearance="@style/neurousStyle"
         android:textSize="60sp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="1.6"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+
+
         />
 
 </RelativeLayout>

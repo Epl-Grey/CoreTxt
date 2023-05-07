@@ -5,14 +5,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:text="@string/coretxt"
+            android:fontFamily="@font/qrfont"
+            android:textAppearance="@style/neurousStyle"
+            android:textSize="60sp"
+            android:textColor="@color/black"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAi"
+            android:layout_width="240dp"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/mainfont"
+            android:gravity="center"
+            android:text="чат с ИИ"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/exit"
+            android:layout_width="240dp"
+            android:layout_height="55dp"
+            android:text="выход"
+            android:textSize="20sp"
+            android:fontFamily="@font/mainfont"
+            android:gravity="center"
+            android:layout_below="@+id/btnAi"
+            android:layout_centerHorizontal="true"/>
+
+
+
+
+    </RelativeLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
