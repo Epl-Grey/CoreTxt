@@ -22,40 +22,53 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.Calendar
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
     private val GALLERY = 1
     private val CAMERA = 2
 
+    lateinit var photoBtn: ImageButton
+    lateinit var galleryBtn: ImageButton
+
+
+    lateinit var messageList: ListView
+    lateinit var sendBtn: Button
+    lateinit var editText: EditText
+
+    lateinit var MsgList: ArrayList<MsgView>
+    lateinit var msgAdapter: msgSimpleAdapter
+
+    lateinit var answerList: ArrayList<answerView>
+    lateinit var answerAdapter: answerSimpleAdapter
+
+    lateinit var imageView: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var photoBtn: ImageButton = findViewById(R.id.photoBtn)
-        var galleryBtn: ImageButton = findViewById(R.id.galleryBtn)
+        photoBtn = findViewById(R.id.photoBtn)
+        galleryBtn = findViewById(R.id.galleryBtn)
 
 
+        messageList = findViewById(R.id.messgeList)
+        sendBtn = findViewById(R.id.sendBtn)
+        editText = findViewById(R.id.edt)
 
-        var messageList: ListView = findViewById(R.id.messgeList)
-        var sendBtn: Button = findViewById(R.id.sendBtn)
-        var editText: EditText = findViewById(R.id.edt)
+        MsgList = java.util.ArrayList<MsgView>()
+        msgAdapter = msgSimpleAdapter(this, MsgList)
 
-        var MsgList: ArrayList<MsgView> = java.util.ArrayList<MsgView>()
-        var msgAdapter: msgSimpleAdapter = msgSimpleAdapter(this, MsgList)
+        answerList = java.util.ArrayList<answerView>()
+        answerAdapter = answerSimpleAdapter(this, answerList)
 
-        var answerList: ArrayList<answerView> = java.util.ArrayList<answerView>()
-        var answerAdapter: answerSimpleAdapter = answerSimpleAdapter(this, answerList)
+        imageView = findViewById(R.id.showImage)
 
         sendBtn.setOnClickListener {
             var textMSg: String = editText.text.toString()
             println(textMSg)
-            MsgList.add(MsgView(textMSg))
-            answerList.add(answerView(textMSg))
-            msgAdapter = msgSimpleAdapter(this, MsgList)
-            answerAdapter = answerSimpleAdapter(this, answerList)
-
-            messageList.adapter = msgAdapter
+            addMessage(textMSg)
 //            messageList.adapter = answerAdapter
         }
 
@@ -67,6 +80,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun addMessage(text: String){
+        MsgList.add(MsgView(text))
+        answerList.add(answerView(text))
+        msgAdapter = msgSimpleAdapter(this, MsgList)
+        answerAdapter = answerSimpleAdapter(this, answerList)
+
+        messageList.adapter = msgAdapter
+    }
 
     fun choosePhotoFromGallary() {
         val galleryIntent = Intent(Intent.ACTION_PICK,
@@ -94,10 +115,10 @@ class MainActivity : AppCompatActivity() {
                 val contentURI = data!!.data
                 try
                 {
-                    val imageView: ImageView = findViewById(R.id.showImage)
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                     val path = saveImage(bitmap)
-                     imageView!!.setImageBitmap(bitmap)
+                    imageView.setImageBitmap(bitmap)
+                    recognizeBitmap(bitmap)
 
                 }
                 catch (e: IOException) {
@@ -113,6 +134,7 @@ class MainActivity : AppCompatActivity() {
             val imageView: ImageView = findViewById(R.id.showImage)
             val bitmap = data?.extras?.get("data") as Bitmap
             imageView.setImageBitmap(bitmap)
+            recognizeBitmap(bitmap)
         }
     }
 
@@ -150,6 +172,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         return ""
+    }
+
+    fun recognizeBitmap(bmp: Bitmap){
+        val text = RestApi.sendImage(bmp)
+        addMessage(text)
     }
 
     companion object {

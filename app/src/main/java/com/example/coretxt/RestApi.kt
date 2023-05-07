@@ -24,7 +24,7 @@ import java.io.ByteArrayOutputStream
 
 class RestApi(val context: Context) {
     companion object {
-        private const val HOST = "http://192.168.0.12:8000/"
+        private const val HOST = "http://coretxt.ddns.net:8000/"
         private val client = HttpClient()
 
         public fun sendImage(bmp: Bitmap): String {
@@ -33,7 +33,6 @@ class RestApi(val context: Context) {
             val stream = ByteArrayOutputStream()
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream)
             val byteArray = stream.toByteArray()
-            bmp.recycle()
 
             runBlocking {
                 val response: HttpResponse = client.submitFormWithBinaryData(
