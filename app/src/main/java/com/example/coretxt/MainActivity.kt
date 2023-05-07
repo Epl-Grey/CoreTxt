@@ -1,5 +1,6 @@
 package com.example.coretxt
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -7,6 +8,8 @@ import android.widget.EditText
 import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,20 +25,10 @@ class MainActivity : AppCompatActivity() {
         var answerList: ArrayList<answerView> = java.util.ArrayList<answerView>()
         var answerAdapter: answerSimpleAdapter = answerSimpleAdapter(this, answerList)
 
-        sendBtn.setOnClickListener {
-            var textMSg: String = editText.text.toString()
-            println(textMSg)
-            MsgList.add(MsgView(textMSg))
-            answerList.add(answerView(textMSg))
-            msgAdapter = msgSimpleAdapter(this, MsgList)
-            answerAdapter = answerSimpleAdapter(this, answerList)
+        var btnExit: Button = findViewById(R.id.exit)
 
-            messageList.adapter = msgAdapter
-            messageList.adapter = answerAdapter
-
-
-
-
+        btnExit.setOnClickListener {
+            System.exit(-1)
         }
 
     }
