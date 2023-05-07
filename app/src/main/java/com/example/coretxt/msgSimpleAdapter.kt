@@ -15,13 +15,18 @@ class msgSimpleAdapter(context: Context, arrayList: ArrayList<MsgView>) :
         // convertView which is recyclable view
         var currentItemView = convertView
 
+        var i: Int = 0
+
         // of the recyclable view is null then inflate the custom layout for the same
         if (currentItemView == null) {
-            if(true) {
+
+            if(position%2 == 0) {
                 currentItemView = LayoutInflater.from(context).inflate(R.layout.message_layout, parent, false)
-            }else{
+            } else {
                 currentItemView = LayoutInflater.from(context).inflate(R.layout.answer_message, parent, false)
             }
+            //currentItemView = LayoutInflater.from(context).inflate(R.layout.answer_message, parent, false)
+
         }
 
         // get the position of the view from the ArrayAdapter
@@ -32,7 +37,7 @@ class msgSimpleAdapter(context: Context, arrayList: ArrayList<MsgView>) :
         assert(currentNumberPosition != null)
         if (currentNumberPosition != null) {
             nameText.setText(currentNumberPosition.msgText)
-            System.out.println(currentNumberPosition.msgText)
+
         }
         // then according to the position of the view assign the desired TextView 1 for the same
 
