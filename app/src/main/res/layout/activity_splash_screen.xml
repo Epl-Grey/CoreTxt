@@ -9,18 +9,21 @@
 
     <TextView
         android:id="@+id/coreTxt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:textAlignment="center"
-        android:layout_centerVertical="true"
-        android:text="@string/coretxt"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:fontFamily="@font/qrfont"
-        android:textAppearance="@style/neurousStyle"
-        android:textSize="60sp"
         android:shadowColor="@color/black"
-        android:shadowRadius="1.6"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:text="@string/coretxt"
+        android:textAlignment="center"
+        android:textAppearance="@style/neurousStyle"
+        android:textSize="53sp"
 
 
         />

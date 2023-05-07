@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="220dp"
+        android:background="@drawable/message2"
+        android:id="@+id/la"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginVertical="5dp">
+
+        <TextView
+            android:id="@+id/messageText"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:gravity="top"
+            android:text="message"
+            android:textColor="@color/white"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
