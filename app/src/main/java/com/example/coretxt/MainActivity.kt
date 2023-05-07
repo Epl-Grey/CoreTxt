@@ -25,11 +25,7 @@ class MainActivity : AppCompatActivity() {
         var answerList: ArrayList<answerView> = java.util.ArrayList<answerView>()
         var answerAdapter: answerSimpleAdapter = answerSimpleAdapter(this, answerList)
 
-        var btnExit: Button = findViewById(R.id.exit)
 
-        btnExit.setOnClickListener {
-            System.exit(-1)
-        }
 
     }
 }
