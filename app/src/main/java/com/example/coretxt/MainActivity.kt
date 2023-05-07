@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         var answerList: ArrayList<answerView> = java.util.ArrayList<answerView>()
         var answerAdapter: answerSimpleAdapter = answerSimpleAdapter(this, answerList)
 
-
-
+//        System.out.println(RestApi.sendText("some text 123"))
     }
 }
