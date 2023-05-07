@@ -10,14 +10,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
+        <ImageView
             android:id="@+id/textview2"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="80dp"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:text="@string/coretxt"
-            android:fontFamily="@font/qrfont"
+            android:background="@drawable/qrtext"
             android:textAppearance="@style/neurousStyle"
             android:textSize="60sp"
             android:textColor="@color/black"
